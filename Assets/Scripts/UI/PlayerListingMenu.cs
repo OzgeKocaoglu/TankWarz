@@ -10,13 +10,30 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
     private Transform _content;
     [SerializeField]
     private PlayerListing _playerListPrefab;
-
+    private MultiplayerCanvases _canvases;
 
     private List<PlayerListing> _listing = new List<PlayerListing>();
 
-    private void Awake()
+
+    public override void OnEnable()
     {
+        base.OnEnable();
         GetCurrentRoomPlayers();
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        for(int i = 0; i < _listing.Count; i++)
+        {
+            Destroy(_listing[i].gameObject);
+        }
+        _listing.Clear();
+    }
+
+    public void FirstInitialize(MultiplayerCanvases canvases)
+    {
+        _canvases = canvases;
     }
 
     private void GetCurrentRoomPlayers()
@@ -30,12 +47,21 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
 
     private void AddPlayerListing(Player player)
     {
-        PlayerListing listing = (PlayerListing)Instantiate(_playerListPrefab, _content);
-        if (listing != null)
+        int index = _listing.FindIndex(x => x.Player == player);
+        if(index != -1)
         {
-            listing.SetPlayerInfo(player);
-            _listing.Add(listing);
+            _listing[index].SetPlayerInfo(player);
         }
+        else
+        {
+            PlayerListing listing = (PlayerListing)Instantiate(_playerListPrefab, _content);
+            if (listing != null)
+            {
+                listing.SetPlayerInfo(player);
+                _listing.Add(listing);
+            }
+        }
+       
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)

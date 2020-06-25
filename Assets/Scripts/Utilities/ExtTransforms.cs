@@ -1,18 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ExtTransforms : MonoBehaviour
+public static class Transforms
 {
-    // Start is called before the first frame update
-    void Start()
+    public static void DestroyChildren(this Transform t, bool destroyImmediateyl = false)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        foreach(Transform child in t)
+        {
+            if (destroyImmediateyl)
+                MonoBehaviour.DestroyImmediate(child.gameObject);
+            else
+                MonoBehaviour.Destroy(child.gameObject);
+        }
     }
 }
