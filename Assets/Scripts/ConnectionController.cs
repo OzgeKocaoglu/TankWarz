@@ -12,6 +12,7 @@ public class ConnectionController : MonoBehaviourPunCallbacks
     private void Start()
     {
         Debug.Log("Connecting to server: ");
+        PhotonNetwork.AutomaticallySyncScene = true; //Connection'ı kaybetmemek için sahne değişimlerinde izin verdik.
         //PhotonNetwork.NickName = MasterManager.PlayerSettings.NickName;
         PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
         PhotonNetwork.ConnectUsingSettings();
