@@ -10,6 +10,8 @@ public class CurrentRoomCanvas : MonoBehaviour
     private LeaveRoomMenu _leaveRoomMenu;
     private MultiplayerCanvases _multiplayerCanvases;
 
+    public LeaveRoomMenu LeaveRoomMenu { get { return _leaveRoomMenu; } }
+
     public void FirstInitialize(MultiplayerCanvases _canvases)
     {
         _multiplayerCanvases = _canvases;
