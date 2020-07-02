@@ -172,7 +172,8 @@ GameObject:
   - component: {fileID: 7936574762889873629}
   - component: {fileID: 7936574762889873628}
   - component: {fileID: 7936574762889873625}
-  - component: {fileID: 114553040637688310}
+  - component: {fileID: 114347410120812052}
+  - component: {fileID: 114555513252345992}
   m_Layer: 0
   m_Name: TankPlayer
   m_TagString: Player
@@ -239,6 +240,7 @@ MonoBehaviour:
   _roketBullet: {fileID: 740289634121923043, guid: 420d84f80d344384688e5628e216f06e,
     type: 3}
   _bulletSpeed: 1000
+  _nickname: 
 --- !u!114 &7936574762889873629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,7 +288,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &114553040637688310
+--- !u!114 &114347410120812052
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -298,21 +300,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownerId: 0
-  group: 0
-  OwnerShipWasTransfered: 0
-  prefixBackup: -1
-  synchronization: 3
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 7936574762889873624}
   ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
   viewIdField: 0
-  instantiationId: -1
-  currentMasterID: -1
+  InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &114555513252345992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7936574762889873619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a3f181b3ab5052489ec2651df56cb97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myTank: {fileID: 0}
 --- !u!1001 &7936574762271199721
 PrefabInstance:
   m_ObjectHideFlags: 0
