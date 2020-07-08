@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviourPun
 {
-    public GameObject ObjectLeft; //Object which is coming from
+    public int ObjectLeft; //Object which is coming from
     [SerializeField]
     private GameObject _exploEffect;
     private void Start()
@@ -16,10 +17,11 @@ public class Bullet : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            if(ObjectLeft != collision.gameObject)
+            if(ObjectLeft != collision.gameObject.GetComponent<PhotonView>().ViewID)
             {
-                collision.gameObject.GetComponent<PlayerHealth>().GetDamage();
-                Destroy(this.gameObject);
+                photonView.RPC("Damage", RpcTarget.All, ObjectLeft, collision.GetComponent<PhotonView>().ViewID);
+               
+                //bu efecti multiplayer için düzenle
                GameObject _expoEffect = Instantiate(_exploEffect);
                 _expoEffect.transform.position = new Vector3(collision.gameObject.transform.position.x + 1, collision.gameObject.transform.position.y, 0);
                 Destroy(_expoEffect.gameObject,2);
@@ -28,8 +30,46 @@ public class Bullet : MonoBehaviour
         }
         else if(collision.tag == "Block")
         {
-            Destroy(this.gameObject);
+            PhotonNetwork.Destroy(this.gameObject);
+
         }
         
+    }
+
+    [PunRPC]
+    public void SenderID(int playerID)
+    {
+        ObjectLeft = playerID;
+    }
+
+    [PunRPC]
+    public void Damage(int ReceiverPlayer, int localPlayer)
+    {
+        OfflineControl(ReceiverPlayer, localPlayer);
+    }
+
+
+    public List<GameObject> allPlayerObjects;
+    public void OfflineControl(int rPlayer, int lPlayer)
+    {
+        foreach(GameObject receiverPlayer in Resources.FindObjectsOfTypeAll(typeof(GameObject)))
+        {
+            if (receiverPlayer.GetComponent<PhotonView>())
+            {
+                allPlayerObjects.Add(receiverPlayer);
+            }
+        }
+
+        for(int i = 0; i<allPlayerObjects.Count; i++)
+        {
+            int newID = i;
+            if(allPlayerObjects[newID].GetComponent<PhotonView>().ViewID == lPlayer)
+            {
+                allPlayerObjects[newID].GetComponent<PlayerHealth>().GetDamage();
+            }
+           
+        }
+
+        Destroy(this.gameObject);
     }
 }

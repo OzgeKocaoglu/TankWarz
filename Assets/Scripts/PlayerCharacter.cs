@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using Photon;
 
-public class PlayerCharacter : MonoBehaviour
+public class PlayerCharacter : MonoBehaviourPun
 {
     [SerializeField]
     Character _character;
@@ -26,22 +29,28 @@ public class PlayerCharacter : MonoBehaviour
 
     private void Update()
     {
+       
         Fire();
     }
 
 
     public void Fire()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (photonView.IsMine)
         {
-            GameObject _bullet = Instantiate(_roketBullet);
-            _bullet.transform.position = this.transform.position;
-            _bullet.transform.rotation = this.transform.rotation;
-            _bullet.GetComponent<Bullet>().ObjectLeft = this.gameObject;
-            _bullet.GetComponent<Rigidbody2D>().AddForce(this.transform.up * _bulletSpeed);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GameObject _bullet = PhotonNetwork.Instantiate("Bullet", this.transform.position, Quaternion.identity, 0);
+                //_bullet.transform.position = this.transform.position;
+                _bullet.GetComponent<PhotonView>().RPC("SenderID", RpcTarget.All, photonView.ViewID);
+                _bullet.GetComponent<Rigidbody2D>().AddForce(this.transform.up * _bulletSpeed);
+            }
         }
+        
       
     }
+
+
 
 
 

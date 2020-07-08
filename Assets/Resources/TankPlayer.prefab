@@ -172,8 +172,8 @@ GameObject:
   - component: {fileID: 7936574762889873629}
   - component: {fileID: 7936574762889873628}
   - component: {fileID: 7936574762889873625}
+  - component: {fileID: 114052024074875808}
   - component: {fileID: 114347410120812052}
-  - component: {fileID: 114555513252345992}
   m_Layer: 0
   m_Name: TankPlayer
   m_TagString: Player
@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
+  _playerCreator: {fileID: 0}
 --- !u!50 &7936574762889873625
 Rigidbody2D:
   serializedVersion: 4
@@ -288,6 +289,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &114052024074875808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7936574762889873619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0379fde88ad1a464c85521d8fce78846, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114347410120812052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,26 +316,13 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 0
+  Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 114052024074875808}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &114555513252345992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7936574762889873619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a3f181b3ab5052489ec2651df56cb97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _myTank: {fileID: 0}
 --- !u!1001 &7936574762271199721
 PrefabInstance:
   m_ObjectHideFlags: 0

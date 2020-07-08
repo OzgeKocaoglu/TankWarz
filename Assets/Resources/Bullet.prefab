@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 910135971325785071}
   - component: {fileID: 8541139948506859613}
   - component: {fileID: 96354296339964398}
+  - component: {fileID: 114442702558871198}
+  - component: {fileID: 114215214501639200}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -142,9 +144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f70172f307a6f4b88ba0022919ed00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectLeft: {fileID: 0}
+  ObjectLeft: 0
   _exploEffect: {fileID: 7226450059435571647, guid: 986987f7369962e4a92d2beaf76f5538,
     type: 3}
+  allPlayerObjects: []
 --- !u!96 &96354296339964398
 TrailRenderer:
   serializedVersion: 2
@@ -249,3 +252,40 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &114442702558871198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740289634121923043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 114215214501639200}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &114215214501639200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740289634121923043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0

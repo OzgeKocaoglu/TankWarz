@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -46,4 +47,5 @@ public class PlayerMovement : MonoBehaviour
         _movementSpeed -= 10f;
     }
 
+    
 }
