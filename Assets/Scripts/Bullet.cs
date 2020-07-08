@@ -50,6 +50,8 @@ public class Bullet : MonoBehaviourPun
 
 
     public List<GameObject> allPlayerObjects;
+    GameObject damageTaker;
+    string shooterName;
     public void OfflineControl(int rPlayer, int lPlayer)
     {
         foreach(GameObject receiverPlayer in Resources.FindObjectsOfTypeAll(typeof(GameObject)))
@@ -65,11 +67,15 @@ public class Bullet : MonoBehaviourPun
             int newID = i;
             if(allPlayerObjects[newID].GetComponent<PhotonView>().ViewID == lPlayer)
             {
-                allPlayerObjects[newID].GetComponent<PlayerHealth>().GetDamage();
+                damageTaker = allPlayerObjects[newID];
+            }
+            if(allPlayerObjects[newID].GetComponent<PhotonView>().ViewID == ObjectLeft)
+            {
+                shooterName = allPlayerObjects[newID].GetComponent<PhotonView>().Owner.NickName;
             }
            
         }
-
+        damageTaker.GetComponent<PlayerHealth>().GetDamage(shooterName);
         Destroy(this.gameObject);
     }
 }

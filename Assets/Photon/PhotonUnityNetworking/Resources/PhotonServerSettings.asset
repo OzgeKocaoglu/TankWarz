@@ -36,6 +36,7 @@ MonoBehaviour:
   - RPC_ChangeReadyState
   - SenderID
   - Damage
+  - DeathHappen
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
