@@ -33,7 +33,6 @@ public class PhotonPlayerCreator : MonoBehaviour
         yield return new WaitForSeconds(3);
         int spawnPicker = Random.Range(0, GameManager._gameManager.spawnPoints.Length);
         PhotonNetwork.Instantiate("TankPlayer", GameManager._gameManager.spawnPoints[spawnPicker].position, GameManager._gameManager.spawnPoints[spawnPicker].rotation, 0);
-        
     }
 
 

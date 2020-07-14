@@ -11,10 +11,17 @@ public class PlayerListing : MonoBehaviour
 
     public Player Player { get; private set; }
     public bool Ready = false;
+    public int ScoreC = 0;
+    public static int Death = 0;
 
     public void SetPlayerInfo(Player player)
     {
         Player = player;
         _text.text = player.NickName;
+        ScoreC = (int)player.CustomProperties["Score"];
+
     }
+
+
+
 }

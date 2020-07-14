@@ -147,6 +147,7 @@ MonoBehaviour:
   ObjectLeft: 0
   _exploEffect: {fileID: 7226450059435571647, guid: 986987f7369962e4a92d2beaf76f5538,
     type: 3}
+  KillC: 0
   allPlayerObjects: []
 --- !u!96 &96354296339964398
 TrailRenderer:

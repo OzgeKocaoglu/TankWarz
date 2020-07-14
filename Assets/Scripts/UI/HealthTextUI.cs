@@ -12,6 +12,6 @@ public class HealthTextUI : MonoBehaviour
 
     private void Update()
     {
-        _playerHealth.text = _playerHealthScript.
+        
     }
 }

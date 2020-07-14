@@ -8,9 +8,12 @@ public class Bullet : MonoBehaviourPun
     public int ObjectLeft; //Object which is coming from
     [SerializeField]
     private GameObject _exploEffect;
+    public int KillC = 0;
+
     private void Start()
     {
         Destroy(this.gameObject, 10);
+       
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -19,10 +22,9 @@ public class Bullet : MonoBehaviourPun
         {
             if(ObjectLeft != collision.gameObject.GetComponent<PhotonView>().ViewID)
             {
-                photonView.RPC("Damage", RpcTarget.All, ObjectLeft, collision.GetComponent<PhotonView>().ViewID);
-               
+                photonView.RPC("Damage", RpcTarget.All, ObjectLeft, collision.GetComponent<PhotonView>().ViewID); 
                 //bu efecti multiplayer için düzenle
-               GameObject _expoEffect = Instantiate(_exploEffect);
+                GameObject _expoEffect = Instantiate(_exploEffect);
                 _expoEffect.transform.position = new Vector3(collision.gameObject.transform.position.x + 1, collision.gameObject.transform.position.y, 0);
                 Destroy(_expoEffect.gameObject,2);
 
@@ -50,7 +52,7 @@ public class Bullet : MonoBehaviourPun
 
 
     public List<GameObject> allPlayerObjects;
-    GameObject damageTaker;
+    GameObject damageTaker, shooter;
     string shooterName;
     public void OfflineControl(int rPlayer, int lPlayer)
     {
@@ -72,10 +74,14 @@ public class Bullet : MonoBehaviourPun
             if(allPlayerObjects[newID].GetComponent<PhotonView>().ViewID == ObjectLeft)
             {
                 shooterName = allPlayerObjects[newID].GetComponent<PhotonView>().Owner.NickName;
+                shooter = allPlayerObjects[newID];
             }
            
         }
-        damageTaker.GetComponent<PlayerHealth>().GetDamage(shooterName);
+        damageTaker.GetComponent<PlayerHealth>().GetDamage(shooterName, shooter);
+        
+
         Destroy(this.gameObject);
     }
+
 }

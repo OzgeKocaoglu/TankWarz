@@ -54,9 +54,9 @@ public class Bonus : MonoBehaviour
                 GiveMovementBonus();
                 Destroy(_movementBonusPrefab);
                 collision.gameObject.transform.GetChild(2).gameObject.SetActive(true);
-                BONUSPANEL_.SetActive(true);
-                startTimer(timeLeft);
-                ISMOVEMENTSPEEDACTİVE = true;
+                //BONUSPANEL_.SetActive(true);
+                //startTimer(timeLeft);
+                //ISMOVEMENTSPEEDACTİVE = true;
             }
         }
     }

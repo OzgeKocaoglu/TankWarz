@@ -7,7 +7,14 @@ using Photon.Realtime;
 
 public class ConnectionController : MonoBehaviourPunCallbacks
 {
+    private ExitGames.Client.Photon.Hashtable _myCustomProperties = new ExitGames.Client.Photon.Hashtable();
 
+    public void SetCustom()
+    {
+        _myCustomProperties["Score"] = 0;
+        PhotonNetwork.LocalPlayer.CustomProperties = _myCustomProperties;
+    }
+   
 
     private void Start()
     {
@@ -27,6 +34,7 @@ public class ConnectionController : MonoBehaviourPunCallbacks
         if (!PhotonNetwork.InLobby)
         {
             PhotonNetwork.JoinLobby();
+            SetCustom();
         }
         
     }
