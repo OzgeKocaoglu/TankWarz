@@ -4,7 +4,7 @@
   
   <p>
     2D Multiplayer game made with Unity and using Photon Engine.
-    You can find project preview video at [here](https://youtu.be/v68SkjbNKFo)
+    You can find project preview video at https://youtu.be/v68SkjbNKFo
   </p>
   
   
