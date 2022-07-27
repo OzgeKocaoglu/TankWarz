@@ -1,6 +1,5 @@
 <div align="center">
 
-  <img src="https://github.com/OzgeKocaoglu/prometheus/blob/master/icons/icon.png" alt="logo" width="200" height="auto" />
   <h1>Tank Warz</h1>
   
   <p>
